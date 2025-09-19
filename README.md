@@ -7,6 +7,8 @@ This project deploys a secure, serverless pipeline to send GCP Budget notificati
 
 It uses a private 2nd Gen Cloud Function that is triggered by a Pub/Sub topic. The function formats the budget alert (handling both 'Actual' and 'Forecasted' spends) and sends it to an MS Teams webhook URL, which is stored securely in Secret Manager.
 
+Default region this deploys to is Europe-West1 and should be changed in variables.tf
+
 ## Architecture
 
 **GCP Budget** $\rightarrow$ **Pub/Sub Topic** $\rightarrow$ **Cloud Function (Gen 2, private)** $\rightarrow$ **Secret Manager** $\rightarrow$ **MS Teams**
