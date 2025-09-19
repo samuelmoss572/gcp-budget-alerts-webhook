@@ -49,7 +49,7 @@ It uses a private 2nd Gen Cloud Function that is triggered by a Pub/Sub topic. T
     ```
     Review the plan and type `yes` to deploy. This will create all the resources, including the private function and all the necessary IAM permissions.
 
-6.  **CRITICAL - Connect Your Budget (Manual UI Step):**
+6.  **Connect Your Budget (Manual UI Step):**
     Terraform cannot programmatically connect the Billing service. You must do this one-time step in the GCP Console:
     * Go to **Billing** $\rightarrow$ **Budgets & alerts**.
     * Find the Budget you want to monitor and click **EDIT BUDGET**.
