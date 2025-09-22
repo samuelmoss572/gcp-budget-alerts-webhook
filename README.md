@@ -9,6 +9,12 @@ It uses a private 2nd Gen Cloud Function that is triggered by a Pub/Sub topic. T
 
 Default region this deploys to is Europe-West1 and should be changed in variables.tf
 
+This solution is deployed using Terraform with the following details:
+
+* **Private Function:** The Cloud Function is deployed as a private Cloud Run service (the 2nd Gen default).
+* **Authenticated Trigger:** The Pub/Sub (Eventarc) trigger is authenticated using the project's **Default Compute Engine Service Account** (`...-compute@...`), which is granted the `run.invoker` role.
+* **Build Agent:** The function build also uses the **Default Compute Engine Service Account**, which is granted `run.builder` and `storage.objectViewer` roles.
+
 ## Architecture
 
 **GCP Budget** $\rightarrow$ **Pub/Sub Topic** $\rightarrow$ **Cloud Function (Gen 2, private)** $\rightarrow$ **Secret Manager** $\rightarrow$ **MS Teams**
@@ -24,10 +30,21 @@ Default region this deploys to is Europe-West1 and should be changed in variable
 ## Prerequisites
 
 1.  **GCP Project:** A GCP project with Billing enabled.
-2.  **Permissions:** You must have permissions to create resources, enable APIs, and grant IAM roles (specifically, you must be able to act as the Service Accounts you create, i.e., `roles/iam.serviceAccountUser`).
 3.  **MS Teams Webhook URL:** You must generate this from your MS Teams channel first.
 4.  **Terraform:** Terraform CLI (v1.0.0+) installed.
 5.  **gcloud:** Google Cloud SDK installed and authenticated (`gcloud auth login`).
+
+## APIs Required (if not already enabled)
+
+ "run.googleapis.com",
+    "cloudfunctions.googleapis.com",
+    "cloudbuild.googleapis.com",
+    "eventarc.googleapis.com",
+    "pubsub.googleapis.com",
+    "secretmanager.googleapis.com",
+    "artifactregistry.googleapis.com",
+    "cloudresourcemanager.googleapis.com",
+    "iam.googleapis.com",
 
 ## Deployment Steps
 
