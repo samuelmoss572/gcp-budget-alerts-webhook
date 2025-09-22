@@ -52,25 +52,20 @@ Note: The limitations here - particularly the Domain Restricted Sharing note: ht
 
 1.  **Clone/Download Files:** Place all 5 files from this guide into a new directory.
 
-2.  **Create Your Configuration:** Copy the example `.tfvars` file.
-    ```bash
-    cp terraform.tfvars.example terraform.tfvars
-    ```
+2.  **Edit `terraform.tfvars`:** Open the `terraform.tfvars` file and fill in your `project_id` and the `teams_webhook_url` you generated.
 
-3.  **Edit `terraform.tfvars`:** Open the `terraform.tfvars` file and fill in your `project_id` and the `teams_webhook_url` you generated.
-
-4.  **Initialize Terraform:**
+3.  **Initialize Terraform:**
     ```bash
     terraform init
     ```
 
-5.  **Apply Configuration:**
+4.  **Apply Configuration:**
     ```bash
     terraform apply
     ```
     Review the plan and type `yes` to deploy. This will create all the resources, including the private function and all the necessary IAM permissions.
 
-6.  **Connect Your Budget (Manual UI Step):**
+5.  **Connect Your Budget (Manual UI Step):**
     Terraform cannot programmatically connect the Billing service. You must do this one-time step in the GCP Console:
     * Go to **Billing** $\rightarrow$ **Budgets & alerts**.
     * Find the Budget you want to monitor and click **EDIT BUDGET**.
