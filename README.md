@@ -84,10 +84,6 @@ Note: The limitations here - particularly the Domain Restricted Sharing note: ht
 
 After the deployment is complete, you can send a test message from your Cloud Shell to validate the entire pipeline:
 
-```bash
-# Get your topic name from the Terraform output (or variables.tf)
-TOPIC_NAME=$(terraform output -raw topic_name)
-
 # Publish a test message
-gcloud pubsub topics publish $TOPIC_NAME \
+gcloud pubsub topics publish projects/${your-project-id}/${your-topic-id}
     --message='{"costAmount": 95.50, "budgetAmount": 100.00, "budgetDisplayName": "Terraform-Test-Alert", "currencyCode": "USD", "alertThresholdExceeded": 0.9}'
