@@ -3,7 +3,7 @@ Copyright 2025 Google. This software is provided as-is, without warranty or repr
 
 # GCP Budget Alerts to MS Teams (Terraform)
 
-This project deploys a secure, serverless pipeline to send GCP Budget notifications to a Microsoft Teams channel.
+This project deploys a secure, serverless pipeline to send GCP Budget notifications to a Microsoft Teams channel (or other webhook!)
 
 It uses a private 2nd Gen Cloud Function that is triggered by a Pub/Sub topic. The function formats the budget alert (handling both 'Actual' and 'Forecasted' spends) and sends it to an MS Teams webhook URL, which is stored securely in Secret Manager.
 
