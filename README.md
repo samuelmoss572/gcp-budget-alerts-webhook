@@ -15,6 +15,8 @@ This solution is deployed using Terraform with the following details:
 * **Authenticated Trigger:** The Pub/Sub (Eventarc) trigger is authenticated using the project's **Default Compute Engine Service Account** (`...-compute@...`), which is granted the `run.invoker` role.
 * **Build Agent:** The function build also uses the **Default Compute Engine Service Account**, which is granted `run.builder` and `storage.objectViewer` roles.
 
+Note: The limitations here - particularly the Domain Restricted Sharing note: https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#limitations
+
 ## Architecture
 
 **GCP Budget** $\rightarrow$ **Pub/Sub Topic** $\rightarrow$ **Cloud Function (Gen 2, private)** $\rightarrow$ **Secret Manager** $\rightarrow$ **MS Teams**
